@@ -1,0 +1,40 @@
+﻿@using System.Web.Optimization
+@using TesteDextra.VMMV
+@model IngredienteIndexViewModel
+@{
+    ViewBag.Title = "Cadastrar Região";
+}
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/js/Ingrediente.js")   
+    @Scripts.Render("~/bundles/jqueryval") 
+}
+<div class="container">
+    <div class="divBack">
+        <strong>Cadastro de Regiões</strong>
+    </div>
+    <form id="Ingrediente-form" class="form" method="post">
+        @Html.HiddenFor(x=>x.Inclusao)
+        @Html.HiddenFor(x=>x.IngredienteID)
+        <div id="idIngrediente" class="ocultar"></div>
+        <div id="retorna-erro" class="ocultar text-danger alert-danger"></div>
+        <div>
+            <span>@Html.LabelFor(model => model.IngredienteLancheID)</span><span class="obrigatorio">*</span>
+            <div class="select">
+                @Html.DropDownListFor(model => model.IngredienteLancheID, Model.IngredienteLancheListItem)
+                @Html.ValidationMessageFor(model => model.IngredienteLancheID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="espacamento-vert">
+            <span>@Html.LabelFor(model => model.Descricao)</span><span class="obrigatorio">*</span>
+            @Html.EditorFor(model => model.Descricao)
+            @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+        </div>
+        <div class="espacamento-vert">
+            <button id="inserir">Inserir</button>
+            <button id="salvar" class="ocultar">Salvar</button>
+        </div>
+    </form>
+    @Html.Action("CarregaRegioes", "Ingrediente")
+</div>
+@Html.Partial("~/Views/Ingrediente/_Modal.cshtml")

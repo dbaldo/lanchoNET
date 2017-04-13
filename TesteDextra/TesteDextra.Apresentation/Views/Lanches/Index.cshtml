@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "Lanchonete";
+}
+
+<h1>Cardápio</h1>
+<table>
+    <thead>
+        <tr>
+            <td>
+                Código do Lanche
+            </td>
+            <td>
+                Nome
+            </td>
+            <td>
+                Ingredientes
+            </td>
+            <td>
+                Preço R$
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                1
+            </td>
+            <td>
+                X-Bacon
+            </td>
+            <td>
+                1 Banco(s), (1) Hamburguer de Carne e (1) queijo.
+            </td>
+            <td>
+                7,50
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2
+            </td>
+            <td>
+                X-Burguer
+            </td>
+            <td>
+                (1) Hamburguer de Carne e (1) queijo.
+            </td>
+            <td>
+                5,30
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<h1>Crie seu próprio lanche</h1>
+<h4>Selecione os ingredientes abaixo e clique em calcular para ver o preço</h4>
+<hr>
+<table>
+    <thead>
+        <tr>
+            <td>
+                Selecione
+            </td>
+            <td>
+                Nome
+            </td>
+            <td>
+                Quantidade Unid/Porção
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <input type="checkbox" name="">
+            </td>
+            <td>
+                X-Bacon
+            </td>
+            <td>
+                <input type="number" name="" value="0">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="">
+            </td>
+            <td>
+                Hamburguer de Carne
+            </td>
+            <td>
+                <input type="number" name="" value="0">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="">
+            </td>
+            <td>
+                Ovo
+            </td>
+            <td>
+                <input type="number" name="" value="0">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="">
+            </td>
+            <td>
+                Queijo
+            </td>
+            <td>
+                <input type="number" name="" value="0">
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<button type="submit">Calcular</button>
+

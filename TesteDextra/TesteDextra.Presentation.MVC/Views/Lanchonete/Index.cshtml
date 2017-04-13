@@ -1,0 +1,107 @@
+﻿@model TesteDextra.VMMV.LancheIndex
+@{
+    ViewBag.Title = "Lanchonete";
+}
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/js/Lanche.js")
+}
+<h1>Cardápio</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Cardapio.First().LancheID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cardapio.First().Nome)
+            </th>
+            <th>
+                @Html.DisplayName("Ingredientes")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model =>  model.Cardapio.First().Preco)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lanche in Model.Cardapio)
+        {
+            <tr>
+                <td>
+                    @lanche.LancheID
+                </td>
+                <td>
+                    @lanche.Nome
+                </td>
+                <td>
+                    @foreach (var ingrediente in lanche.IngredientesLanche)
+                    {
+                        if (ingrediente.IngredienteID == lanche.IngredientesLanche.First().IngredienteID)
+                        {
+                            <b>@ingrediente.Quantidade </b> @($"{Model.Ingredientes.Where(x => x.IngredienteID == ingrediente.IngredienteID).First().Descricao} (s) ")
+                        }
+                        else
+                        {
+                            if (ingrediente.IngredienteID == lanche.IngredientesLanche.Last().IngredienteID)
+                            {
+                                @("e ") <b>@ingrediente.Quantidade </b> @($"{Model.Ingredientes.Where(x => x.IngredienteID == ingrediente.IngredienteID).First().Descricao} (s) ")
+                            }
+                            else
+                            {
+                                @(", ") <b>@ingrediente.Quantidade </b> @($"{Model.Ingredientes.Where(x => x.IngredienteID == ingrediente.IngredienteID).First().Descricao} (s) ")
+                            }
+                        }
+                    }
+                </td>
+                <td>
+                    @lanche.Preco.ToString("N2")
+                </td>
+            </tr>
+            
+        }
+        
+
+    </tbody>
+</table>
+<h1>Crie seu próprio lanche</h1>
+<h4>Selecione os ingredientes abaixo e clique em calcular para ver o preço</h4>
+<hr>
+<table  class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Selecione
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredientes.First().Descricao)
+            </th>
+            <th>
+                Quantidade Unid/Porção
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ingrediente in Model.Ingredientes)
+        {
+            <tr id="@ingrediente.IngredienteID">
+                <td>
+                    <input type="checkbox" class="ingrediente-selecionado">
+                </td>
+                <td>
+                    @ingrediente.Descricao
+                </td>
+                <td>
+                    <input type="number" value="1" min="1" class="quantidade-ingrediente">
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button type="submit" id="btn-calcular">Calcular</button>
+<div class="ocultar" id="preco-final">
+    <h3>O preço do seu lanche é R$: 14,50</h3>
+</div>
+

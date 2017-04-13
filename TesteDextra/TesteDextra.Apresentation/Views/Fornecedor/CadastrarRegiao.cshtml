@@ -1,0 +1,44 @@
+﻿@using System.Web.Optimization
+@using TesteDextra.VMMV
+@model LancheIndexViewModel
+@{
+    ViewBag.Title = "Cadastrar Região para Forncedor";
+}
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/js/Ingrediente.js")
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<div class="container">
+    <div class="divBack">
+        <strong>Cadastro de Regiões do Lanche</strong>
+    </div>
+    <div id="retorna-erro" class="ocultar text-danger alert-danger"></div>
+    <div class="form">
+        <div>
+            <span>Lanche</span><span class="obrigatorio">*</span>
+            <div class="select">
+                @Html.DropDownListFor(model => model.Lanchees.First().LancheID, Model.LancheesListItem)
+            </div>
+        </div>
+        <div class="espacamento-vert">
+            <button id="buscar">Buscar</button>
+        </div>
+    </div>
+    <div class="grid">
+        <table id="tabela-regioes">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" /></th>
+                    <th>UF</th>
+                    <th>Região</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="espacamento-vert">
+        <button id="gravar">Gravar</button>
+    </div>
+</div>

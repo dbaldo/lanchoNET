@@ -1,0 +1,23 @@
+﻿@using TesteDextra.VMMV
+@model List<IngredienteListViewModel>
+<div class="grid">
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().IngredienteLancheTela)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Descricao)</th>
+            <th>@Html.DisplayNameFor(model => model.First().AtivoTela)</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        @foreach (var Ingrediente in Model)
+        {
+            <tr id="@Ingrediente.IngredienteID">
+                <td>@Ingrediente.IngredienteLancheTela</td>
+                <td>@Ingrediente.Descricao</td>
+                <td>@Ingrediente.AtivoTela</td>
+                <td><button class="editar">Editar</button></td>
+                <td><button class="@(Ingrediente.Ativo? "inativar":"ativar")" data-toggle="modal" data-target="@(Ingrediente.Ativo ? "#inativar":"")"> @(Ingrediente.Ativo ? "Inativar" : "Ativar")</button></td>
+            </tr>
+        }
+        
+    </table>
+</div>
